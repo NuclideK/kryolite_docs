@@ -24,6 +24,44 @@
     }
   ],
   "paths": {
+    "/richlist": {
+      "get": {
+        "tags": [
+          "complete"
+        ],
+        "description": "Returns up to 25 people that hold the most balance",
+        "responses": {
+          "200": {
+            "description": "Request success",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": [
+                  {
+                    "id": "ae2152cf-4263-4f85-b361-da0920bfac1e",
+                    "address": {
+                      "buffer": "oQDAOJC8e8IxqWQG5EWPHoPOmzR6sp6bP/M="
+                    },
+                    "balance": 5407500000000,
+                    "pending": 0
+                  },
+                  {
+                    "id": "70fa53c7-f7a3-453b-ba37-3d4c5e4daf43",
+                    "address": {
+                      "buffer": "oQAPcxSFU6Bm/hyYPsQAWndfaqQ8V6R/YHM="
+                    },
+                    "balance": 2250000000,
+                    "pending": 0
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
     "/ledger/{address}": {
       "get": {
         "tags": [
@@ -68,44 +106,6 @@
         }
       ]
     },
-    "/richlist": {
-      "get": {
-        "tags": [
-          "complete"
-        ],
-        "description": "Returns up to 25 people that hold the most balance",
-        "responses": {
-          "200": {
-            "description": "Request success",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
-                },
-                "example": [
-                  {
-                    "id": "ae2152cf-4263-4f85-b361-da0920bfac1e",
-                    "address": {
-                      "buffer": "oQDAOJC8e8IxqWQG5EWPHoPOmzR6sp6bP/M="
-                    },
-                    "balance": 5407500000000,
-                    "pending": 0
-                  },
-                  {
-                    "id": "70fa53c7-f7a3-453b-ba37-3d4c5e4daf43",
-                    "address": {
-                      "buffer": "oQAPcxSFU6Bm/hyYPsQAWndfaqQ8V6R/YHM="
-                    },
-                    "balance": 2250000000,
-                    "pending": 0
-                  }
-                ]
-              }
-            }
-          }
-        }
-      }
-    },
     "/ledger/{address}/balance": {
       "get": {
         "tags": [
@@ -149,6 +149,9 @@
         "responses": {
           "200": {
             "description": "todo"
+          },
+          "400": {
+            "description": "Invalid address"
           }
         }
       },
@@ -166,19 +169,67 @@
     "/ledger/{address}/transactions": {
       "get": {
         "tags": [
-          "to-do"
+          "complete"
         ],
-        "description": "todo",
+        "description": "Returns transaction history of wallet",
         "responses": {
           "200": {
-            "description": "todo",
+            "description": "Wallet exists",
             "content": {
               "application/json; charset=utf-8": {
                 "schema": {
                   "type": "object"
+                },
+                "examples": {
+                  "no transtaction": {
+                    "value": []
+                  },
+                  "has transactions": {
+                    "value": [
+                      {
+                        "id": "315c34ba-e532-4743-a76b-089174465138",
+                        "transactionType": 1,
+                        "publicKey": null,
+                        "to": {
+                          "buffer": "oQAhaJFzULj5zNndaaQJyqV8d62eXVOyh0o="
+                        },
+                        "value": 750000000,
+                        "maxFee": 0,
+                        "data": null,
+                        "nonce": 1198781660,
+                        "signature": null,
+                        "effects": [],
+                        "hash": {
+                          "buffer": "V2IxcG0XHygekABXCGA5Ouv6DOmjSMM7rTJNFV8gKq4="
+                        },
+                        "from": null
+                      },
+                      {
+                        "id": "37cbfa65-79df-4494-aa36-5d2bcc65cbc7",
+                        "transactionType": 1,
+                        "publicKey": null,
+                        "to": {
+                          "buffer": "oQAhaJFzULj5zNndaaQJyqV8d62eXVOyh0o="
+                        },
+                        "value": 750000000,
+                        "maxFee": 0,
+                        "data": null,
+                        "nonce": 970975531,
+                        "signature": null,
+                        "effects": [],
+                        "hash": {
+                          "buffer": "lbXqdmDUDgd4xo0cVPZDF85sHMwycxRuXR3XUQqnXxg="
+                        },
+                        "from": null
+                      }
+                    ]
+                  }
                 }
               }
             }
+          },
+          "400": {
+            "description": "Invalid address"
           }
         }
       },
