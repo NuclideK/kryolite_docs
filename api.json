@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Kryolite API",
-    "description": "todo description",
+    "description": "https://kryolite.io/",
     "version": "0.1"
   },
   "servers": [
@@ -15,8 +15,16 @@
   ],
   "tags": [
     {
-      "name": "complete",
-      "description": "Documented methods"
+      "name": "ledger",
+      "description": null
+    },
+    {
+      "name": "contract",
+      "description": null
+    },
+    {
+      "name": "misc",
+      "description": "Miscellaneous"
     },
     {
       "name": "to-do",
@@ -27,7 +35,7 @@
     "/richlist": {
       "get": {
         "tags": [
-          "complete"
+          "misc"
         ],
         "description": "Returns up to 25 people that hold the most balance",
         "responses": {
@@ -65,7 +73,7 @@
     "/ledger/{address}": {
       "get": {
         "tags": [
-          "complete"
+          "ledger"
         ],
         "description": "Returns a LedgerWallet",
         "responses": {
@@ -109,7 +117,7 @@
     "/ledger/{address}/balance": {
       "get": {
         "tags": [
-          "complete"
+          "ledger"
         ],
         "description": "Returns the balance of a wallet",
         "responses": {
@@ -140,36 +148,10 @@
         }
       ]
     },
-    "/contract/{address}/state": {
-      "get": {
-        "tags": [
-          "to-do"
-        ],
-        "description": "todo",
-        "responses": {
-          "200": {
-            "description": "todo"
-          },
-          "400": {
-            "description": "Invalid address"
-          }
-        }
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "address",
-          "required": true,
-          "schema": {
-            "type": "string"
-          }
-        }
-      ]
-    },
     "/ledger/{address}/transactions": {
       "get": {
         "tags": [
-          "complete"
+          "ledger"
         ],
         "description": "Returns transaction history of wallet",
         "responses": {
@@ -249,10 +231,58 @@
         "tags": [
           "to-do"
         ],
-        "description": "todo",
+        "description": "Gets a contract",
         "responses": {
+          "200": {
+            "description": "TO-DO"
+          },
           "204": {
-            "description": "todo"
+            "description": "No contract found"
+          },
+          "400": {
+            "description": "Invalid address"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "address",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/contract/{address}/state": {
+      "get": {
+        "tags": [
+          "to-do"
+        ],
+        "description": "Gets the contract state",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "contract": {
+                    "value": "TO-DO"
+                  },
+                  "no contract": {
+                    "description": "Content lenght 0",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid address"
           }
         }
       },
@@ -272,10 +302,10 @@
         "tags": [
           "to-do"
         ],
-        "description": "to-do --> what is hash here exactly?",
+        "description": "Gets a transaction with Sha256-hash",
         "responses": {
-          "204": {
-            "description": "todo"
+          "500": {
+            "description": "Invalid hash"
           }
         }
       },
