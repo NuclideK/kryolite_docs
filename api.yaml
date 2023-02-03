@@ -1,0 +1,138 @@
+openapi: 3.0.1
+info:
+  title: Kryolite API
+  description: todo description
+  version: '0.1'
+servers:
+  - url: http://testnet-1.kryolite.io
+  - url: http://testnet-2.kryolite.io
+tags:
+- name: complete
+  description: Documented methods
+- name: to-do
+  description: Methods that are not yet documented
+paths:
+  /ledger/{address}:
+    get:
+      tags:
+      - complete
+      description: Returns a LedgerWallet
+      responses:
+        '200':
+          description: Wallet exists and has data
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: object
+                example: {"id":"70fa53c7-f7a3-453b-ba37-3d4c5e4daf43","address":{"buffer":"oQAPcxSFU6Bm/hyYPsQAWndfaqQ8V6R/YHM="},"balance":2250000000,"pending":0}
+        '204':
+          description: Wallet has no data
+        '400':
+          description: Wallet does not exist
+    parameters:
+      - in: path
+        name: address
+        required: true
+        schema:
+          type: string
+  /richlist:
+    get:
+      tags:
+      - complete
+      description: Returns up to 25 people that hold the most balance
+      responses:
+        '200':
+          description: Request success
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: object
+              example:
+                [{"id":"ae2152cf-4263-4f85-b361-da0920bfac1e","address":{"buffer":"oQDAOJC8e8IxqWQG5EWPHoPOmzR6sp6bP/M="},"balance":5407500000000,"pending":0},{"id":"70fa53c7-f7a3-453b-ba37-3d4c5e4daf43","address":{"buffer":"oQAPcxSFU6Bm/hyYPsQAWndfaqQ8V6R/YHM="},"balance":2250000000,"pending":0}]
+
+  /ledger/{address}/balance:
+    get:
+      tags:
+      - complete
+      description: Returns the balance of a wallet
+      responses:
+        '200':
+          description: Wallet found, Balance of the wallet
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: number
+              example: 0
+        '400':
+          description: Wallet does not exist
+    parameters:
+      - in: path
+        name: address
+        required: true
+        schema:
+          type: string
+
+  /contract/{address}/state:
+    get:
+      tags:
+      - to-do
+      description: todo
+      responses:
+        '200':
+          description: todo
+    parameters:
+      - in: path
+        name: address
+        required: true
+        schema:
+          type: string
+
+  /ledger/{address}/transactions:
+    get:
+      tags:
+      - to-do
+      description: todo
+      responses:
+        '200':
+          description: todo
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: object
+    parameters:
+      - in: path
+        name: address
+        required: true
+        schema:
+          type: string
+
+  /contract/{address}:
+    get:
+      tags:
+      - to-do
+      description: todo
+      responses:
+        '204':
+          description: todo
+    parameters:
+      - in: path
+        name: address
+        required: true
+        schema:
+          type: string
+
+
+  /tx/{hash}:
+    get:
+      tags:
+      - to-do
+      description: to-do --> what is hash here exactly?
+      responses:
+        '204':
+          description: todo
+    parameters:
+      - in: path
+        name: hash
+        required: true
+        schema:
+          type: string
