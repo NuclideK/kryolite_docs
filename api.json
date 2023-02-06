@@ -23,6 +23,10 @@
       "description": null
     },
     {
+      "name": "blocks",
+      "description": null
+    },
+    {
       "name": "misc",
       "description": "Miscellaneous"
     },
@@ -398,12 +402,12 @@
     "/block/pos": {
       "get": {
         "tags": [
-          "to-do"
+          "blocks"
         ],
-        "description": "todo",
+        "description": "Returns a POS block at a certain height",
         "responses": {
           "200": {
-            "description": "todo",
+            "description": "Block found!",
             "content": {
               "application/json; charset=utf-8": {
                 "schema": {
@@ -500,12 +504,12 @@
     "/block/pow": {
       "get": {
         "tags": [
-          "to-do"
+          "blocks"
         ],
-        "description": "todo",
+        "description": "Returns a POW block at a certain height",
         "responses": {
           "200": {
-            "description": "todo",
+            "description": "Block found!",
             "content": {
               "application/json; charset=utf-8": {
                 "schema": {

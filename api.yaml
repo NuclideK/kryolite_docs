@@ -11,6 +11,8 @@ tags:
     description:
   - name: contract
     description:
+  - name: blocks
+    description:
   - name: misc
     description: Miscellaneous
 
@@ -194,11 +196,11 @@ paths:
   '/block/pos':
     get:
       tags:
-        - to-do
-      description: todo
+        - blocks
+      description: Returns a POS block at a certain height
       responses:
         '200':
-          description: todo
+          description: Block found!
           content:
             application/json; charset=utf-8:
               schema:
@@ -215,11 +217,11 @@ paths:
   '/block/pow':
     get:
       tags:
-        - to-do
-      description: todo
+        - blocks
+      description: Returns a POW block at a certain height
       responses:
         '200':
-          description: todo
+          description: Block found!
           content:
             application/json; charset=utf-8:
               schema:
