@@ -236,7 +236,7 @@ paths:
   '/balance':
     get:
       tags:
-        - to-do
+        - misc
       description: Returns the balance of a wallet
       responses:
         '200':
@@ -250,7 +250,7 @@ paths:
           description: Invalid wallet
     parameters:
       - in: query
-        name: height
+        name: wallet
         required: true
         schema:
           type: string
