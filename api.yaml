@@ -106,7 +106,7 @@ paths:
       description: Gets a contract
       responses:
         '200':
-          description: TO-DO
+          description: TODO
         '204':
           description: No contract found
         '400':
@@ -131,7 +131,7 @@ paths:
                   type: object
                 examples:
                   contract:
-                    value: "TO-DO"
+                    value: "TODO"
                   no contract:
                     description: Content lenght 0
                     value: null
@@ -146,9 +146,16 @@ paths:
   '/tx/{hash}':
     get:
       tags:
-        - to-do
+        - misc
       description: Gets a transaction with Sha256-hash
       responses:
+        '200':
+          description: Transaction exists
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: object
+                example: {"id":"2956a6b3-b7bc-4c8f-8a26-dc7361ea7d27","transactionType":1,"publicKey":null,"to":{"buffer":"oQAPcxSFU6Bm/hyYPsQAWndfaqQ8V6R/YHM="},"value":750000000,"maxFee":0,"data":null,"nonce":1994864687,"signature":null,"effects":[],"hash":{"buffer":"Mh3Zn4wRn+5jxFdqWzeAjFwERwHW2I7AMlLa8qi38kU="},"from":null}
         '500':
           description: Invalid hash
     parameters:
