@@ -4,8 +4,8 @@ info:
   description: https://kryolite.io/
   version: '0.1'
 servers:
-  - url: 'http://testnet-1.kryolite.io'
-  - url: 'http://testnet-2.kryolite.io'
+  - url: 'https://testnet-1.kryolite.io'
+  - url: 'https://testnet-2.kryolite.io'
 tags:
   - name: ledger
     description:
