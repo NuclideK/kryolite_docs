@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: Kryolite API
   description: https://kryolite.io/
-  version: '0.1'
+  version: v40-DEV
 servers:
   - url: 'https://testnet-1.kryolite.io'
   - url: 'https://testnet-2.kryolite.io'
@@ -28,10 +28,10 @@ paths:
         '200':
           description: Request success
           content:
-            application/json; charset=utf-8:
+            text/plain; charset=utf-8:
               schema:
                 type: object
-              example: [{"id":"ae2152cf-4263-4f85-b361-da0920bfac1e","address":{"buffer":"oQDAOJC8e8IxqWQG5EWPHoPOmzR6sp6bP/M="},"balance":5407500000000,"pending":0},{"id":"70fa53c7-f7a3-453b-ba37-3d4c5e4daf43","address":{"buffer":"oQAPcxSFU6Bm/hyYPsQAWndfaqQ8V6R/YHM="},"balance":2250000000,"pending":0}]
+              example: [{"id":"ae2152cf-4263-4f85-b361-da0920bfac1e","address":"kryo:5VWKXb3AVi3W1cf1DYaWQeAeucUH6CSK6gNT","balance":14433750000000,"pending":0},{"id":"22df6fc8-59a1-4d2b-9910-3442be6162e9","address":"kryo:5VWvts7oP8guKEptxxZUuHt59nJTMCfnQk3s","balance":102750000000,"pending":0},{"id":"3fcfe9d0-cc1b-437b-85f8-b2633c513dd1","address":"kryo:5VWE7jqp7gXGKWUE64As2efpkJuWS4HFrVKT","balance":10500000000,"pending":0},{"id":"70fa53c7-f7a3-453b-ba37-3d4c5e4daf43","address":"kryo:5VWtQuxjWj8qLUmPZpZKqmWc8iVo86twSyh4","balance":2250000000,"pending":0}]
   /peers:
     get:
       tags:
